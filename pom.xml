@@ -21,9 +21,8 @@
             <groupId>com.github.degr</groupId>
             <artifactId>HibernateSupport</artifactId>
             <scope>provided</scope>
-            <version>c957e13f95</version>
+            <version>eb4539e738</version>
         </dependency>
-
     </dependencies>
 
     <build>
