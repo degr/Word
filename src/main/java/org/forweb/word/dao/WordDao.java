@@ -1,15 +1,16 @@
 package org.forweb.word.dao;
 
-import org.forweb.word.entity.Language;
 import org.forweb.word.entity.Word;
 import org.forweb.database.AbstractDao;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
 public interface WordDao extends AbstractDao<Word> {
 
     @Query("select word from Word word where word.language = :languageId and word.module = :moduleId")
