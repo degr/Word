@@ -1,4 +1,4 @@
-create table LANGUAGE (
+create table language (
   id integer(11) auto_increment not null,
   title varchar(255),
   shortName VARCHAR (2),
@@ -10,13 +10,13 @@ create table LANGUAGE (
   primary key(id)
 );
 
-create table MODULE (
+create table module (
   id integer(11) auto_increment not null,
   title varchar(255),
   UNIQUE (title),
   primary key(id)
 );
-create table WORD(
+create table word(
   id integer(11) auto_increment not null,
   title varchar(255),
   value varchar(255),
@@ -27,13 +27,13 @@ create table WORD(
   primary key(id)
 );
 
-ALTER TABLE `WORD` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
-ALTER TABLE `MODULE` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
-ALTER TABLE `LANGUAGE` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
+ALTER TABLE `word` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
+ALTER TABLE `module` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
+ALTER TABLE `language` DEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci;
 
-ALTER TABLE `WORD` ADD CONSTRAINT `module_fk` FOREIGN KEY (`module`) REFERENCES `MODULE` (`id`);
-ALTER TABLE `WORD` ADD CONSTRAINT `language_fk` FOREIGN KEY (`language`) REFERENCES `LANGUAGE` (`id`);
-ALTER TABLE `WORD` ADD UNIQUE INDEX (`language`, `module`, `title`) USING BTREE ;
+ALTER TABLE `word` ADD CONSTRAINT `module_fk` FOREIGN KEY (`module`) REFERENCES `module` (`id`);
+ALTER TABLE `word` ADD CONSTRAINT `language_fk` FOREIGN KEY (`language`) REFERENCES `language` (`id`);
+ALTER TABLE `word` ADD UNIQUE INDEX (`language`, `module`, `title`) USING BTREE ;
 
-ALTER TABLE `MODULE` ADD UNIQUE INDEX (`title`) USING BTREE ;
+ALTER TABLE `module` ADD UNIQUE INDEX (`title`) USING BTREE ;
 
