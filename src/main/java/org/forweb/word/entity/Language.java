@@ -3,6 +3,7 @@ package org.forweb.word.entity;
 
 import org.forweb.database.AbstractEntity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
@@ -12,6 +13,7 @@ public class Language extends AbstractEntity {
     private String shortName;
     private String nativeTitle;
 
+    @Column(name = "prim")
     private Boolean primary;
 
     public String getTitle() {
