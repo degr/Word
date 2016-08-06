@@ -1,14 +1,15 @@
 package org.forweb.word.service;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.forweb.database.AbstractService;
 import org.forweb.word.dao.ModuleDao;
 import org.forweb.word.entity.Module;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class ModuleService extends AbstractService<Module, ModuleDao> {
     @Autowired
     private WordService wordService;
@@ -42,7 +43,7 @@ public class ModuleService extends AbstractService<Module, ModuleDao> {
     @Override
     public Iterable<Module> save(Iterable<Module> list) {
         List<Module> out = new ArrayList<>();
-        for(Module module : list) {
+        for (Module module : list) {
             out.add(save(module));
         }
         return out;

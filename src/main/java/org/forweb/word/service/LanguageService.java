@@ -1,6 +1,5 @@
 package org.forweb.word.service;
 
-import org.forweb.database.AbstractEntity;
 import org.forweb.database.AbstractService;
 import org.forweb.word.dao.LanguageDao;
 import org.forweb.word.entity.Language;
@@ -17,7 +16,7 @@ public class LanguageService extends AbstractService<Language, LanguageDao> {
     private WordService wordService;
 
     public void delete(Iterable<Language> list) {
-        for(Language language : list) {
+        for (Language language : list) {
             wordService.deleteByLanguageId(language.getId());
         }
         this.dao.delete(list);
@@ -35,7 +34,6 @@ public class LanguageService extends AbstractService<Language, LanguageDao> {
         this.dao.delete(id);
         updatePrimaryLanguage();
     }
-
 
 
     public Iterable<Language> save(Iterable<Language> list) {
@@ -70,9 +68,9 @@ public class LanguageService extends AbstractService<Language, LanguageDao> {
 
     public Language getLanguage(String shortName) {
         Language out = dao.findByShortName(shortName);
-        if(out == null) {
+        if (out == null) {
             out = dao.findByTitle(shortName);
-            if(out == null) {
+            if (out == null) {
                 return dao.findByNativeTitle(shortName);
             } else {
                 return out;
@@ -83,8 +81,8 @@ public class LanguageService extends AbstractService<Language, LanguageDao> {
     }
 
     private void updatePrimaryLanguage() {
-        if(dao.findByPrimary(true) == null) {
-            for(Language language : dao.findAll()) {
+        if (dao.findByPrimary(true) == null) {
+            for (Language language : dao.findAll()) {
                 language.setPrimary(true);
                 dao.save(language);
                 break;
